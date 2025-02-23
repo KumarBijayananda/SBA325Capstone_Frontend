@@ -87,9 +87,19 @@ button:hover {
   transform: scale(1.05);
 }
 
-.draftCard{
-  color:white;
+.cardDiv{
+  display: flex;
+  flex-wrap: wrap;
 }
+.draftCard{
+  width: 25vw;
+  height: 20vh;
+  color:white;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin: 5px;
+}
+
 
 
 /* Responsive design */
