@@ -1,10 +1,11 @@
 import LogoutBtn from "../components/LogoutBtn";
+import DashboardComp from "../components/Dashboard";
 
 export default function Dashboard() {
   return (
     <>
       <LogoutBtn />
-      <h1>Dashboard</h1>
+      <DashboardComp/>
     </>
   );
 }
