@@ -9,6 +9,7 @@ import Draft from "./pages/Draft";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
+  
   return (
     <>
       <Routes>
@@ -17,7 +18,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route element={<ProtectedRoutes />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/draft" element={<Draft />} />
+          <Route path="/draft/:id" element={<Draft />} />
         </Route>
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>

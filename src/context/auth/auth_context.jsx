@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import { useCookies } from "react-cookie";
 import axios from 'axios';
 
@@ -6,6 +6,7 @@ const AuthContext = createContext();
 
 export default function AuthProvider({children}){
     const[cookies,setCookies,removeCookie]=useCookies();
+    const [draft, setDraft]=useState(null);
 
     //Login function
     async function login(formData){

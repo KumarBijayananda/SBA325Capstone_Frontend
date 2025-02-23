@@ -51,7 +51,7 @@ export default function DashboardComp() {
         <h1>{user.email}</h1>
         <div className="cardDiv">
           {user.drafts.map((draft) => (
-            <DraftCard draft={draft}/>
+            <DraftCard key={draft.id} draft={draft}/>
           ))}
         </div>
       </>
