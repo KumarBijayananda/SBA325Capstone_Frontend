@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/auth/auth_context";
+import DraftCard from "./DraftCard";
 
 export default function DashboardComp() {
   const { cookies } = useAuth();
@@ -36,12 +37,26 @@ export default function DashboardComp() {
   async function handleclick(e) {
     nav("/draft");
   }
+//   console.log("user data: ", user.drafts[0].title);
 
-  return (
-    <>
-      <h1>Test</h1>
-      <h1>{user.name}</h1>
-      <h1>{user.email}</h1>
-    </>
-  );
+  function loading() {
+    return <h3>Loading Data...</h3>;
+  }
+
+  function loaded() {
+    return (
+      <>
+        <h1>Test</h1>
+        <h1>{user.name}</h1>
+        <h1>{user.email}</h1>
+        <div className="cardDiv">
+          {user.drafts.map((draft) => (
+            <DraftCard draft={draft}/>
+          ))}
+        </div>
+      </>
+    );
+  }
+
+  return user.name ? loaded() : loading();
 }

@@ -87,6 +87,10 @@ button:hover {
   transform: scale(1.05);
 }
 
+.draftCard{
+  color:white;
+}
+
 
 /* Responsive design */
 @media (max-width: 400px) {
