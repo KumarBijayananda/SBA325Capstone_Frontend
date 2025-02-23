@@ -1,12 +1,13 @@
+import React,{ useState } from "react";
+import LoginForm from "../components/LoginForm";
+
+
 export default function Login() {
+  const[newUser, setNewUser]=useState(false);
+
   return (
     <>
-      <div className="formBox">
-        <form className="login">
-            <input type="text" placeholder="email"/>
-            <input type="text" placeholder="password"/>
-        </form>
-      </div>
+      <LoginForm setNewUser={setNewUser} />
     </>
   );
 }
