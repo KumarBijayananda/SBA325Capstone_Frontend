@@ -66,6 +66,22 @@ const Editor = ({ initialContent = "", id, cookies }) => {
     }
   }
 
+  async function handleArchive(){
+    try {
+        if (id) {
+          const res = await axios.post(
+            `http://localhost:3000/archive/${id}`,
+            { body: content },
+            { headers: { "x-auth-token": cookies.token } }
+          );
+          console.log("Saved draft:", res.data);
+        } else {
+            console.log("cannot archive before save")
+        }
+      } catch (error) {
+        console.error("Error saving draft:", error);
+      }
+  }
 
   return (
     <div className="editorContainer">
@@ -73,6 +89,7 @@ const Editor = ({ initialContent = "", id, cookies }) => {
         <div className="editorDiv">
         <div ref={editorRef} style={{ height: "300px" }}></div>
       <button onClick={handleSave}>Save</button>
+      <button onClick={handleArchive}>Archive</button>
         </div>
       
     </div>
