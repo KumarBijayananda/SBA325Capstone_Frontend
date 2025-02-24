@@ -34,7 +34,7 @@ export default function DashboardComp() {
     getUserData();
   }, []);
 
-  async function handleclick(e) {
+  async function handleClick() {
     nav("/draft");
   }
 //   console.log("user data: ", user.drafts[0].title);
@@ -46,6 +46,7 @@ export default function DashboardComp() {
   function loaded() {
     return (
       <>
+      <button className="createNew" onClick={handleClick}>Create New Draft</button>
         <h1>{user.name}</h1>
         <h1>{user.email}</h1>
         <div className="cardDiv">

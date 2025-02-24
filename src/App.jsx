@@ -19,6 +19,7 @@ function App() {
         <Route element={<ProtectedRoutes />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/draft/:id" element={<Draft />} />
+          <Route path="/draft/" element={<Draft />} />
         </Route>
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>

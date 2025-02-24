@@ -12,18 +12,20 @@ export default function Draft(){
 
 
     useEffect(()=>{
-        async function getDraft(id) {
-            const res= await axios.get(`http://localhost:3000/draft/${id}`, {
-                headers: {
-                  "x-auth-token": cookies.token,
-                },
-              });
-              const draft = await res.data; 
-              setDraft(draft);
-
+        if(id){
+            async function getDraft(id) {
+                const res= await axios.get(`http://localhost:3000/draft/${id}`, {
+                    headers: {
+                      "x-auth-token": cookies.token,
+                    },
+                  });
+                  const draft = await res.data; 
+                  setDraft(draft);
+    
+            }
+            getDraft(id);
         }
-        getDraft(id);
-
+       
     },[])
 
     function loaded(){
@@ -36,7 +38,14 @@ export default function Draft(){
     }
 
     function loading(){
-        return <><h3>Loading</h3></>
+        if(!id){
+            return(
+                <>
+                <LogoutBtn/>
+                <Editor cookies={cookies}/>
+                </>
+            )
+        } else return <><h3>Loading</h3></>
     }
     
 
