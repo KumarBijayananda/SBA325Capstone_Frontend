@@ -35,23 +35,35 @@ const Editor = ({ initialContent = "", id, cookies }) => {
 
   async function handleSave() {
     try {
-      const res = await axios.post(
-        `http://localhost:3000/draft/${id}`,
-        { body: content },
-        { headers: { "x-auth-token": cookies.token } }
-      );
-      console.log("Saved draft:", res.data);
+      if (id) {
+        const res = await axios.post(
+          `http://localhost:3000/draft/${id}`,
+          { body: content },
+          { headers: { "x-auth-token": cookies.token } }
+        );
+        console.log("Saved draft:", res.data);
+      } else {
+        const res = await axios.post(
+          `http://localhost:3000/draft/`,
+          { body: content },
+          { headers: { "x-auth-token": cookies.token } }
+        );
+        console.log("Saved draft:", res.data);
+      }
     } catch (error) {
       console.error("Error saving draft:", error);
     }
   }
 
+  async function handleDelete(){
+    
+  }
+
   return (
     <div>
       <div ref={editorRef} style={{ height: "300px" }}></div>
-      <button onClick={handleSave} style={{ marginTop: "10px", padding: "8px 16px", cursor: "pointer" }}>
-        Save
-      </button>
+      <button onClick={handleSave}>Save</button>
+      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 };
