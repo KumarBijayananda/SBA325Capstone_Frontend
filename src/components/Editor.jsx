@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import axios from "axios";
+import Versions from "./Versions";
 
 const Editor = ({ initialContent = "", id, cookies }) => {
   const nav=useNavigate();
@@ -67,9 +68,13 @@ const Editor = ({ initialContent = "", id, cookies }) => {
 
 
   return (
-    <div>
-      <div ref={editorRef} style={{ height: "300px" }}></div>
+    <div className="editorContainer">
+        <div className="versionDiv"><Versions id={id} cookies={cookies}/></div>
+        <div className="editorDiv">
+        <div ref={editorRef} style={{ height: "300px" }}></div>
       <button onClick={handleSave}>Save</button>
+        </div>
+      
     </div>
   );
 };

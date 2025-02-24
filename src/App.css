@@ -112,9 +112,22 @@ button:hover {
   justify-content: space-evenly;
 }
 
+.editorContainer{
+  display: flex;
+}
+.versionDiv{
+  width: 30vw;
+  margin-top: 72px;
+  outline: 1px solid white;
+}
+
+
 /* Responsive design */
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .forms form {
     width: 90%;
+  }
+  .editorContainer{
+    display: block;
   }
 }

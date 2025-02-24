@@ -37,7 +37,7 @@ export default function DashboardComp() {
   async function handleNew() {
     nav("/draft");
   }
-//   console.log("user data: ", user.drafts[0].title);
+  //   console.log("user data: ", user.drafts[0].title);
 
   function loading() {
     return <h3>Loading Data...</h3>;
@@ -46,19 +46,27 @@ export default function DashboardComp() {
   function loaded() {
     return (
       <>
-      <button className="createNew" onClick={handleNew}>Create New Draft</button>
+        <button className="createNew" onClick={handleNew}>
+          Create New Draft
+        </button>
         <h1>{user.name}</h1>
         <h1>{user.email}</h1>
         <div className="cardContainer">
           {user.drafts.map((draft) => (
             <div className="">
-            <DraftCard key={draft.id} draft={draft}/>
-            <div className="cardInfo">
-            <p>Last Update: {new Date(draft.updatedAt).toDateString()}</p>
-            <button>Delete</button>
+              <DraftCard key={draft.id} draft={draft} />
+              <div className="cardInfo">
+                <p>
+                  Last Update on {new Date(draft.updatedAt).toDateString()}{" "}
+                  {
+                    new Date(draft.updatedAt)
+                      .toTimeString({ hour12: false })
+                      .split(" ")[0]
+                  }
+                </p>
+                <button>Delete</button>
+              </div>
             </div>
-            </div>
-
           ))}
         </div>
       </>
