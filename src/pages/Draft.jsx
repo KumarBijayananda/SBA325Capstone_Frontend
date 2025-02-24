@@ -26,7 +26,7 @@ export default function Draft(){
             getDraft(id);
         }
        
-    },[])
+    },[id])
 
     function loaded(){
         return(

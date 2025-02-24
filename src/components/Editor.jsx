@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import axios from "axios";
 
 const Editor = ({ initialContent = "", id, cookies }) => {
+  const nav=useNavigate();
   const editorRef = useRef(null);
   const quillInstance = useRef(null);
   const [content, setContent] = useState(initialContent);
@@ -54,21 +56,20 @@ const Editor = ({ initialContent = "", id, cookies }) => {
           { headers: { "x-auth-token": cookies.token } }
         );
         console.log("Saved draft:", res.data);
+
+        if(res.data) nav(`/draft/${res.data}`);
+
       }
     } catch (error) {
       console.error("Error saving draft:", error);
     }
   }
 
-  async function handleDelete(){
-
-  }
 
   return (
     <div>
       <div ref={editorRef} style={{ height: "300px" }}></div>
       <button onClick={handleSave}>Save</button>
-      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 };

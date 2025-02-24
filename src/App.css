@@ -101,6 +101,7 @@ button:hover {
   flex-wrap: wrap;
 }
 .draftCard{
+  font: rem;
   width: 25vw;
   height: 20vh;
   color:white;
