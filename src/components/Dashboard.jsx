@@ -15,8 +15,6 @@ export default function DashboardComp() {
   });
 
   useEffect(() => {
-    console.log("getUserData");
-
     async function getUserData() {
       try {
         const res = await axios.get("http://localhost:3000/dashboard", {
@@ -51,9 +49,9 @@ export default function DashboardComp() {
         </button>
         <h1>{user.name}</h1>
         <h1>{user.email}</h1>
-        <div className="cardContainer">
+        <div className="cardContainer" key={user.updatedAt}>
           {user.drafts.map((draft) => (
-            <div className="">
+            <div className="cardDiv">
               <DraftCard key={draft.id} draft={draft} />
               <div className="cardInfo">
                 <p>

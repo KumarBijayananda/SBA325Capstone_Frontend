@@ -10,6 +10,7 @@ const Editor = ({ initialContent = "", id, cookies }) => {
   const editorRef = useRef(null);
   const quillInstance = useRef(null);
   const [content, setContent] = useState(initialContent);
+  
 
   useEffect(() => {
     if (!quillInstance.current && editorRef.current) {
@@ -74,12 +75,12 @@ const Editor = ({ initialContent = "", id, cookies }) => {
             { body: content },
             { headers: { "x-auth-token": cookies.token } }
           );
-          console.log("Saved draft:", res.data);
+          console.log("Archived draft:", res.data);
         } else {
             console.log("cannot archive before save")
         }
       } catch (error) {
-        console.error("Error saving draft:", error);
+        console.error("Error archiving draft:", error);
       }
   }
 
