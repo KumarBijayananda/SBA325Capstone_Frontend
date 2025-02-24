@@ -49,10 +49,10 @@ export default function DashboardComp() {
         </button>
         <h1>{user.name}</h1>
         <h1>{user.email}</h1>
-        <div className="cardContainer" key={user.updatedAt}>
+        <div className="cardContainer">
           {user.drafts.map((draft) => (
-            <div className="cardDiv">
-              <DraftCard key={draft.id} draft={draft} />
+            <div className="cardDiv" key={draft.updatedAt}>
+              <DraftCard key={draft.updatedAt} draft={draft} />
               <div className="cardInfo">
                 <p>
                   Last Update on {new Date(draft.updatedAt).toDateString()}{" "}

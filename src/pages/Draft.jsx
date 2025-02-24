@@ -32,7 +32,7 @@ export default function Draft(){
         return(
             <>
             <LogoutBtn/>
-            <Editor initialContent={draft.body} id={id} cookies={cookies}/>
+            <Editor initialContent={draft.body} id={id} cookies={cookies} setDraft={setDraft}/>
             </>
         )
     }
@@ -42,7 +42,7 @@ export default function Draft(){
             return(
                 <>
                 <LogoutBtn/>
-                <Editor cookies={cookies}/>
+                <Editor cookies={cookies} />
                 </>
             )
         } else return <><h3>Loading</h3></>
