@@ -53,7 +53,11 @@ export default function DashboardComp() {
           {user.drafts.map((draft) => (
             <div className="">
             <DraftCard key={draft.id} draft={draft}/>
-            <button>Delete</button></div>
+            <div className="cardInfo">
+            <p>Last Update: {new Date(draft.updatedAt).toDateString()}</p>
+            <button>Delete</button>
+            </div>
+            </div>
 
           ))}
         </div>
