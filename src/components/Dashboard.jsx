@@ -49,11 +49,11 @@ export default function DashboardComp() {
       <button className="createNew" onClick={handleNew}>Create New Draft</button>
         <h1>{user.name}</h1>
         <h1>{user.email}</h1>
-        <div className="cardDiv">
+        <div className="cardContainer">
           {user.drafts.map((draft) => (
-            <>
+            <div className="">
             <DraftCard key={draft.id} draft={draft}/>
-            <button>Delete</button></>
+            <button>Delete</button></div>
 
           ))}
         </div>

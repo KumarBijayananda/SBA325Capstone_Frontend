@@ -1,19 +1,10 @@
 #root {
-  max-width: 1280px;
+  max-width: 90vw;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.text-editor {
-  width: 1086px;
-  margin: 0 auto;
-  color: white;
-}
-.ql-editor {
-  min-height: 100px;
-  color: white;
-}
 body{
   background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
@@ -96,18 +87,24 @@ button:hover {
   transform: scale(1.05);
 }
 
-.cardDiv{
+.cardContainer{
   display: flex;
   flex-wrap: wrap;
+}
+.cardDiv{
+  
 }
 .draftCard{
   font: rem;
   width: 25vw;
-  height: 20vh;
+  min-width: 400px;
+  height: 40vh;
   color:white;
   border: 1px solid white;
   border-radius: 10px;
-  margin: 5px;
+  margin: 1vw 1vw 0 1vw;
+  padding: 10px;
+  overflow: hidden;
 }
 
 
