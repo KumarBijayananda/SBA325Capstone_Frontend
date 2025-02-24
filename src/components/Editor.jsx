@@ -13,13 +13,18 @@ const Editor = ({ initialContent = "", id, cookies }) => {
       const quill = new Quill(editorRef.current, {
         theme: "snow",
         modules: {
-          toolbar: [
-            [{ header: [1, 2, false] }],
-            ["bold", "italic", "underline"],
-            [{ list: "ordered" }, { list: "bullet" }],
-            ["link", "image"],
-            ["clean"],
-          ],
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ["bold", "italic", "underline", "strike"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                [{ script: "sub" }, { script: "super" }],
+                [{ indent: "-1" }, { indent: "+1" }],
+                [{ direction: "rtl" }],
+                [{ align: [] }],
+                ["blockquote", "code-block"],
+                ["link", "image", "video"],
+                ["clean"],
+              ],
         },
       });
 
@@ -56,7 +61,7 @@ const Editor = ({ initialContent = "", id, cookies }) => {
   }
 
   async function handleDelete(){
-    
+
   }
 
   return (
