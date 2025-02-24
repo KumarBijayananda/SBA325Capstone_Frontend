@@ -5,8 +5,17 @@
   text-align: center;
 }
 
+.text-editor {
+  width: 1086px;
+  margin: 0 auto;
+  color: white;
+}
+.ql-editor {
+  min-height: 100px;
+  color: white;
+}
 body{
-  background-color: #2b2b2b;
+  background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
 }
@@ -23,7 +32,7 @@ nav{
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #121212;
+  background-color: #222222;
   color: #ffffff;
 }
 

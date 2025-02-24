@@ -46,7 +46,6 @@ export default function DashboardComp() {
   function loaded() {
     return (
       <>
-        <h1>Test</h1>
         <h1>{user.name}</h1>
         <h1>{user.email}</h1>
         <div className="cardDiv">

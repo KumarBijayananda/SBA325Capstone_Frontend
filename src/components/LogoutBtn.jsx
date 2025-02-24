@@ -6,13 +6,18 @@ export default function LogoutBtn(){
     const nav=useNavigate();
     const {logout} = useAuth();
 
+    function handleDash(){
+        nav('/dashboard');
+    }
+
     async function handleLogout(){
         await logout();
         nav('/')
     }
     return(
         <>
-        <button className="logout" onClick={handleLogout}>
+        <button className="dashboardBtn" onClick={handleDash}>Dashboard</button>
+        <button className="logoutBtn" onClick={handleLogout}>
             Logout
         </button>
         </>

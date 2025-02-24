@@ -3,6 +3,7 @@ import LogoutBtn from "../components/LogoutBtn"
 import { useParams } from "react-router-dom"
 import { useAuth } from "../context/auth/auth_context";
 import axios from "axios";
+import Editor from "../components/Editor";
 
 export default function Draft(){
     const {id}= useParams();
@@ -10,16 +11,14 @@ export default function Draft(){
     const [draft, setDraft] = useState();
 
 
-    console.log("DraftPage: ",id);
     useEffect(()=>{
-        async function getDraft(params) {
-            const res= await axios.get(`http://localhost:3000/draft/${params}`, {
+        async function getDraft(id) {
+            const res= await axios.get(`http://localhost:3000/draft/${id}`, {
                 headers: {
                   "x-auth-token": cookies.token,
                 },
               });
               const draft = await res.data; 
-              console.log("res.data: ", draft)
               setDraft(draft);
 
         }
@@ -31,8 +30,7 @@ export default function Draft(){
         return(
             <>
             <LogoutBtn/>
-            <h1>{draft.title}</h1>
-            
+            <Editor initialContent={draft.body} id={id} cookies={cookies}/>
             </>
         )
     }
