@@ -27,7 +27,7 @@ export default function SignupForm({ setNewUser }){
   }
 
   const handleClick = () => {
-    setNewUser(false);
+    nav('/login')
   };
 
   return (

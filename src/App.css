@@ -1,46 +1,67 @@
+::-webkit-scrollbar-track {
+  background: #1E1E1E; /* Dark grey color, you can choose any color you like */
+}
+
+/* This part changes the scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: #353535; /* Medium grey color, this is the actual scrollbar */
+  border-radius: 5px;
+}
+
+/* You can also change the scrollbar width and height */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the vertical scrollbar */
+  height: 12px; /* Height of the horizontal scrollbar */
+}
+/* Above CSS from:https://community.retool.com/t/dark-theme-white-space-behind-scroll-bar/34453 */
+
 #root {
   max-width: 90vw;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  color: white;
+  color: #e0e0e0;
+  scrollbar-color: #222;
+
 }
 
-body{
+body {
   background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
+  color: #e0e0e0;
 }
 
-nav{
+nav {
   display: flex;
   justify-content: end;
   width: 100vw;
 }
 
+/* Forms Section */
 .forms {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #222222;
+  background-color: #1c1c1d;
   color: #ffffff;
 }
 
 .forms form {
-  background: #1e1e1e;
+  background: #242424;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 400px;
 }
 
 .forms h2 {
   font-size: 24px;
   margin-bottom: 15px;
-  color: #ffffff;
+  color: #f0f0f0;
   text-align: center;
 }
 
@@ -48,29 +69,31 @@ nav{
   font-size: 14px;
   font-weight: bold;
   margin-top: 10px;
-  color: #bbbbbb;
+  color: #aaaaaa;
 }
 
 .forms input {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   padding: 10px;
   margin-top: 5px;
-  border: 1px solid #333;
+  border: 1px solid #444;
   border-radius: 5px;
   font-size: 16px;
-  background: #2a2a2a;
+  background: #2b2b2c;
   color: #ffffff;
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
+  
 }
 
 .forms input:focus {
   border-color: #3b82f6;
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
 }
 
-/* Submit Button */
-button{
+/* Buttons */
+button {
   background-color: #3b82f6;
   color: white;
   padding: 10px;
@@ -87,58 +110,85 @@ button:hover {
   transform: scale(1.05);
 }
 
-.cardContainer{
+/* Draft Cards */
+.cardContainer {
   display: flex;
   flex-wrap: wrap;
+  background: #292a2e;
+  padding: 3%;
+  margin-top: 5vh;
+
 }
-.cardDiv{
-  
-}
-.draftCard{
-  font: rem;
+
+.draftCard {
   width: 25vw;
   min-width: 400px;
   height: 40vh;
-  color:white;
-  border: 1px solid white;
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #333;
   border-radius: 10px;
   margin: 1vw 1vw 0 1vw;
   padding: 10px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.cardInfo{
+.cardBody{
+  padding: 12px 4px;
+  font-size: 12px;
+}
+
+.cardInfo {
   display: flex;
   justify-content: space-evenly;
 }
 
-.editorContainer{
+/* Editor Section */
+.editorContainer {
   display: flex;
+  background: #181818;
+  border-radius: 10px;
+  padding: 15px;
 }
-.versionDiv{
+
+.versionDiv {
   width: 20vw;
-  /* margin-top: 72px; */
-  /* outline: 1px solid white; */
+  padding: 10px;
+  background-color: #202020;
+  border-radius: 8px;
 }
-.versionHead{
+
+.versionHead {
   height: 72px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
 }
-ul{
+
+ul {
   max-width: fit-content;
   margin: 0 auto;
 }
 
-li{
+li {
   margin: 10px;
   list-style-type: none;
+  color: #bdbdbd;
+  transition: color 0.3s;
 }
 
-/* Responsive design */
+li:hover {
+  color: #ffffff;
+}
+
+/* Responsive Design */
 @media (max-width: 600px) {
   .forms form {
     width: 90%;
   }
-  .editorContainer{
+  .editorContainer {
     display: block;
   }
 }

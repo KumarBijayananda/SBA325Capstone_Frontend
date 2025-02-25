@@ -81,7 +81,6 @@ const Editor = ({ initialContent = "", id, cookies }) => {
           { body: quillInstance.current.root.innerHTML },
           { headers: { "x-auth-token": cookies.token } }
         );
-        // console.log("Saved draft:", res.data);
       } else {
         const res = await axios.post(
           `http://localhost:3000/draft/`,
@@ -89,7 +88,7 @@ const Editor = ({ initialContent = "", id, cookies }) => {
           { headers: { "x-auth-token": cookies.token } }
         );
 
-        // if (res.data) nav(`/draft/${res.data}`);
+        if (res.data) nav(`/draft/${res.data}`);
       }
     } catch (error) {
       console.error("Error saving draft:", error);
@@ -98,6 +97,7 @@ const Editor = ({ initialContent = "", id, cookies }) => {
 
   // Archive current draft
   async function handleArchive() {
+    await handleSave();
     try {
       if (id) {
         await axios.post(

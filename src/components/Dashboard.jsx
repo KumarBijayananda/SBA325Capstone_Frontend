@@ -55,7 +55,7 @@ export default function DashboardComp() {
           Create New Draft
         </button>
         <h1>{user.name}</h1>
-        <h1>{user.email}</h1>
+        {/* <h1>{user.email}</h1> */}
         <div className="cardContainer">
           {user.drafts.map((draft) => (
             <div className="cardDiv" key={draft.updatedAt}>

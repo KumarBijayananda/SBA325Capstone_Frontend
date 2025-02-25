@@ -22,7 +22,7 @@ async function handleSubmit(e){
 }
 
   const handleClick = () => {
-    setNewUser(true);
+    nav('/signup')
   };
 
   return (
