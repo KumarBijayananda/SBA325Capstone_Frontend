@@ -30,7 +30,7 @@ export default function DashboardComp() {
     }
 
     getUserData();
-  }, []);
+  }, [user]);
 
   async function handleNew() {
     nav("/draft");
