@@ -9,9 +9,10 @@ const Editor = ({ initialContent = "", id, cookies }) => {
   const nav = useNavigate();
   const editorRef = useRef(null);
   const quillInstance = useRef(null);
-  const [content, setContent] = useState(initialContent);
+  // const [content, setContent] = useState(initialContent);
   const [versions, setVersions] = useState([]);
 
+  // Initialize Quill editor
   useEffect(() => {
     if (!quillInstance.current && editorRef.current) {
       const quill = new Quill(editorRef.current, {
@@ -35,54 +36,22 @@ const Editor = ({ initialContent = "", id, cookies }) => {
       quill.clipboard.dangerouslyPasteHTML(initialContent); // Set initial content
 
       quill.on("text-change", () => {
-        setContent(quill.root.innerHTML);
+        // setContent(quill.root.innerHTML);
+        quillInstance.current = quill;
       });
 
       quillInstance.current = quill; // Store reference to prevent reinitialization
     }
-  }, [content]);
+  }, []);
 
-  async function handleSave() {
-    try {
-      if (id) {
-        const res = await axios.post(
-          `http://localhost:3000/draft/${id}`,
-          { body: content },
-          { headers: { "x-auth-token": cookies.token } }
-        );
-        console.log("Saved draft:", res.data);
-      } else {
-        const res = await axios.post(
-          `http://localhost:3000/draft/`,
-          { body: content },
-          { headers: { "x-auth-token": cookies.token } }
-        );
-        console.log("Saved draft:", res.data);
+  // Update Quill content when `content` state changes
+  // useEffect(() => {
+  //   if (quillInstance.current) {
+  //     quillInstance.current.root.innerHTML = content;
+  //   }
+  // }, []);
 
-        if (res.data) nav(`/draft/${res.data}`);
-      }
-    } catch (error) {
-      console.error("Error saving draft:", error);
-    }
-  }
-
-  async function handleArchive() {
-    try {
-      if (id) {
-        const res = await axios.post(
-          `http://localhost:3000/archive/${id}`,
-          { body: content },
-          { headers: { "x-auth-token": cookies.token } }
-        );
-
-        getVersions();
-      } else {
-        console.log("cannot archive before save");
-      }
-    } catch (error) {
-      console.error("Error archiving draft:", error);
-    }
-  }
+  // Fetch versions
   async function getVersions() {
     try {
       if (id) {
@@ -91,22 +60,64 @@ const Editor = ({ initialContent = "", id, cookies }) => {
             "x-auth-token": cookies.token,
           },
         });
-        const newVersion = await res.data;
-        setVersions(newVersion);
+        setVersions(res.data);
       }
     } catch (error) {
       console.log(error);
     }
   }
 
+  // Fetch draft versions when `id` changes
   useEffect(() => {
     getVersions();
-  }, [id]); // Fetch versions when `id` changes
+  }, [id]);
+
+  // Save draft
+  async function handleSave() {
+    try {
+      if (id) {
+        await axios.post(
+          `http://localhost:3000/draft/${id}`,
+          { body: quillInstance.current.root.innerHTML },
+          { headers: { "x-auth-token": cookies.token } }
+        );
+        // console.log("Saved draft:", res.data);
+      } else {
+        const res = await axios.post(
+          `http://localhost:3000/draft/`,
+          { body: quillInstance.current.root.innerHTML },
+          { headers: { "x-auth-token": cookies.token } }
+        );
+
+        // if (res.data) nav(`/draft/${res.data}`);
+      }
+    } catch (error) {
+      console.error("Error saving draft:", error);
+    }
+  }
+
+  // Archive current draft
+  async function handleArchive() {
+    try {
+      if (id) {
+        await axios.post(
+          `http://localhost:3000/archive/${id}`,
+          { body: quillInstance.current.root.innerHTML },
+          { headers: { "x-auth-token": cookies.token } }
+        );
+        getVersions(); // Refresh versions list
+      } else {
+        console.log("Cannot archive before saving the draft");
+      }
+    } catch (error) {
+      console.error("Error archiving draft:", error);
+    }
+  }
 
   return (
     <div className="editorContainer">
       <div className="versionDiv">
-        <Versions versions={versions} setContent={setContent} />
+        <Versions versions={versions} quillInstance={quillInstance}/>
       </div>
       <div className="editorDiv">
         <div ref={editorRef} style={{ height: "300px" }}></div>

@@ -35,8 +35,15 @@ export default function DashboardComp() {
   async function handleNew() {
     nav("/draft");
   }
-  //   console.log("user data: ", user.drafts[0].title);
 
+  async function handleDelete(id){
+    const res = await axios.delete(`http://localhost:3000/dashboard/${id}`, {
+      headers: {
+        "x-auth-token": cookies.token,
+      },
+    });
+    setUser(res.data)
+  }
   function loading() {
     return <h3>Loading Data...</h3>;
   }
@@ -62,7 +69,7 @@ export default function DashboardComp() {
                       .split(" ")[0]
                   }
                 </p>
-                <button>Delete</button>
+                <button onClick={()=>handleDelete(draft._id)}>Delete</button>
               </div>
             </div>
           ))}

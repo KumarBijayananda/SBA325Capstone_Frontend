@@ -1,32 +1,28 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Versions({ versions, setContent}) {
+export default function Versions({ versions, quillInstance }) {
 
-  
-function handleVersion(index, e){
+
+  function handleVersion(index, e) {
     e.preventDefault();
-    setContent(versions[index].body)
-}
 
-  return versions? (
+    if (quillInstance.current) {
+    quillInstance.current.root.innerHTML = versions[index].body;
+  }
+  }
+
+  return versions.length > 0 ? (
     <>
       <p className="versionHead">Previous Versions</p>
       <div className="versionDiv">
         <ul>
           {versions.map((version, index) => (
-
-            <Link to={`/draft/`} onClick={()=>handleVersion(index)} key={version.updatedAt}>
-            <li className="version" key={version.updatedAt}>
-              {new Date(version.updatedAt).toDateString()}{" "}
-              {
-                new Date(version.updatedAt)
-                  .toTimeString({ hour12: false })
-                  .split(" ")[0]
-              }
+            <li key={version.updatedAt} className="version">
+              <Link to="#" onClick={(e) => handleVersion(index, e)}>
+                {new Date(version.updatedAt).toLocaleDateString()}{" "}
+                {new Date(version.updatedAt).toLocaleTimeString()}
+              </Link>
             </li>
-            </Link>
           ))}
         </ul>
       </div>
