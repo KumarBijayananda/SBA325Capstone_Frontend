@@ -114,7 +114,7 @@ button:hover {
 .cardContainer {
   display: flex;
   flex-wrap: wrap;
-  background: #292a2e;
+  background: #181818;
   padding: 3%;
   margin-top: 5vh;
   border-radius: 10px;

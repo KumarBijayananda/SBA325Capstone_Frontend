@@ -13,7 +13,7 @@ export default function Versions({ versions, quillInstance }) {
 
   return versions.length > 0 ? (
     <>
-      <p className="versionHead">Previous Versions</p>
+      <p className="versionHead" style={{textDecoration:'underline'}}> Previous Versions </p>
       <div className="versionDiv">
         <ul>
           {versions.map((version, index) => (
@@ -28,6 +28,6 @@ export default function Versions({ versions, quillInstance }) {
       </div>
     </>
   ) : (
-    <p>No previous versions</p>
+    <p style={{textDecoration:'underline'}}> No previous versions </p>
   );
 }

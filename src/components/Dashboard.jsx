@@ -57,7 +57,7 @@ export default function DashboardComp() {
         <h1>{user.name}</h1>
         {/* <h1>{user.email}</h1> */}
         <div className="cardContainer">
-          {user.drafts.map((draft) => (
+          {user.drafts.length>0?(user.drafts.map((draft) => (
             <div className="cardDiv" key={draft.updatedAt}>
               <DraftCard key={draft.updatedAt} draft={draft} />
               <div className="cardInfo">
@@ -72,7 +72,7 @@ export default function DashboardComp() {
                 <button onClick={()=>handleDelete(draft._id)}>Delete</button>
               </div>
             </div>
-          ))}
+          ))):(<p style={{fontStyle:'italic'}}>Please start creating your drafts and they will appear here...</p>)}
         </div>
       </>
     );

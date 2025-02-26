@@ -76,7 +76,7 @@ const Editor = ({ initialContent = "", id, cookies }) => {
   async function handleSave() {
     try {
       if (id) {
-        await axios.post(
+        await axios.patch(
           `http://localhost:3000/draft/${id}`,
           { body: quillInstance.current.root.innerHTML },
           { headers: { "x-auth-token": cookies.token } }
