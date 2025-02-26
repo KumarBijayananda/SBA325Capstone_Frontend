@@ -74,24 +74,28 @@ const Editor = ({ initialContent = "", id, cookies }) => {
 
   // Save draft
   async function handleSave() {
-    try {
-      if (id) {
-        await axios.patch(
-          `http://localhost:3000/draft/${id}`,
-          { body: quillInstance.current.root.innerHTML },
-          { headers: { "x-auth-token": cookies.token } }
-        );
-      } else {
-        const res = await axios.post(
-          `http://localhost:3000/draft/`,
-          { body: quillInstance.current.root.innerHTML },
-          { headers: { "x-auth-token": cookies.token } }
-        );
-
-        if (res.data) nav(`/draft/${res.data}`);
+    if(quillInstance.current.root.textContent.trim()===""){
+      window.alert("There is nothing to save!!")
+    } else{
+      try {
+        if (id) {
+          await axios.patch(
+            `http://localhost:3000/draft/${id}`,
+            { body: quillInstance.current.root.innerHTML },
+            { headers: { "x-auth-token": cookies.token } }
+          );
+        } else {
+          const res = await axios.post(
+            `http://localhost:3000/draft/`,
+            { body: quillInstance.current.root.innerHTML },
+            { headers: { "x-auth-token": cookies.token } }
+          );
+  
+          if (res.data) nav(`/draft/${res.data}`);
+        }
+      } catch (error) {
+        console.error("Error saving draft:", error);
       }
-    } catch (error) {
-      console.error("Error saving draft:", error);
     }
   }
 

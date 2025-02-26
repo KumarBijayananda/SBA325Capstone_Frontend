@@ -94,7 +94,7 @@ nav {
 
 /* Buttons */
 button {
-  background-color: #3b82f6;
+  background-color: #2563eb;
   color: white;
   padding: 10px;
   border: none;
@@ -106,7 +106,7 @@ button {
 }
 
 button:hover {
-  background-color: #2563eb;
+  background-color: #4983ff;
   transform: scale(1.05);
 }
 
@@ -124,7 +124,7 @@ button:hover {
   width: 25vw;
   min-width: 400px;
   height: 40vh;
-  background-color: #1e1e1e;
+  background-color: #292929;
   color: white;
   border: 1px solid #333;
   border-radius: 10px;
