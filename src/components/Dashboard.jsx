@@ -30,19 +30,28 @@ export default function DashboardComp() {
     }
 
     getUserData();
-  }, [user]);
+  }, [cookies.token]);
 
   async function handleNew() {
     nav("/draft");
   }
 
-  async function handleDelete(id){
-    const res = await axios.delete(`http://localhost:3000/dashboard/${id}`, {
-      headers: {
-        "x-auth-token": cookies.token,
-      },
-    });
-    setUser(res.data)
+  async function handleDelete(id) {
+    try {
+      await axios.delete(`http://localhost:3000/dashboard/${id}`, {
+        headers: {
+          "x-auth-token": cookies.token,
+        },
+      });
+  
+      // draft update by filtering out deleted draft
+      setUser((prevUser) => ({
+        ...prevUser,
+        drafts: prevUser.drafts.filter((draft) => draft._id !== id),
+      }));
+    } catch (error) {
+      console.error(error);
+    }
   }
   function loading() {
     return <h3>Loading Data...</h3>;

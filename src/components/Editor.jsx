@@ -9,7 +9,6 @@ const Editor = ({ initialContent = "", id, cookies }) => {
   const nav = useNavigate();
   const editorRef = useRef(null);
   const quillInstance = useRef(null);
-  // const [content, setContent] = useState(initialContent);
   const [versions, setVersions] = useState([]);
 
   // Initialize Quill editor
@@ -36,7 +35,6 @@ const Editor = ({ initialContent = "", id, cookies }) => {
       quill.clipboard.dangerouslyPasteHTML(initialContent); // Set initial content
 
       quill.on("text-change", () => {
-        // setContent(quill.root.innerHTML);
         quillInstance.current = quill;
       });
 
@@ -44,15 +42,8 @@ const Editor = ({ initialContent = "", id, cookies }) => {
     }
   }, []);
 
-  // Update Quill content when `content` state changes
-  // useEffect(() => {
-  //   if (quillInstance.current) {
-  //     quillInstance.current.root.innerHTML = content;
-  //   }
-  // }, []);
-
-  // Fetch versions
-  async function getVersions() {
+  // Fetch draft versions when `id` changes
+  const getVersions = async () => {
     try {
       if (id) {
         const res = await axios.get(`http://localhost:3000/archive/${id}`, {
@@ -65,18 +56,17 @@ const Editor = ({ initialContent = "", id, cookies }) => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  // Fetch draft versions when `id` changes
   useEffect(() => {
     getVersions();
   }, [id]);
 
   // Save draft
   async function handleSave() {
-    if(quillInstance.current.root.textContent.trim()===""){
-      window.alert("There is nothing to save!!")
-    } else{
+    if (quillInstance.current.root.textContent.trim() === "") {
+      window.alert("There is nothing to save!!");
+    } else {
       try {
         if (id) {
           await axios.patch(
@@ -90,7 +80,7 @@ const Editor = ({ initialContent = "", id, cookies }) => {
             { body: quillInstance.current.root.innerHTML },
             { headers: { "x-auth-token": cookies.token } }
           );
-  
+
           if (res.data) nav(`/draft/${res.data}`);
         }
       } catch (error) {
@@ -109,9 +99,7 @@ const Editor = ({ initialContent = "", id, cookies }) => {
           { body: quillInstance.current.root.innerHTML },
           { headers: { "x-auth-token": cookies.token } }
         );
-        getVersions(); // Refresh versions list
-      } else {
-        console.log("Cannot archive before saving the draft");
+        await getVersions(); // Refresh versions list after archiving
       }
     } catch (error) {
       console.error("Error archiving draft:", error);
@@ -121,12 +109,12 @@ const Editor = ({ initialContent = "", id, cookies }) => {
   return (
     <div className="editorContainer">
       <div className="versionDiv">
-        <Versions versions={versions} quillInstance={quillInstance}/>
+        <Versions versions={versions} quillInstance={quillInstance} />
       </div>
       <div className="editorDiv">
-        <div ref={editorRef} style={{ height: "300px" }}></div>
+        <div ref={editorRef} style={{ height: "60vh" }}></div>
         <button onClick={handleSave}>Save</button>
-        <button onClick={handleArchive}>Archive</button>
+        <button disabled={!id} onClick={handleArchive}>Archive</button>
       </div>
     </div>
   );
