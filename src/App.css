@@ -20,7 +20,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  color: #e0e0e0;
+  /* color: #e0e0e0; */
   scrollbar-color: #222;
 
 }
@@ -117,7 +117,7 @@ button:hover {
   background: #292a2e;
   padding: 3%;
   margin-top: 5vh;
-
+  border-radius: 10px;
 }
 
 .draftCard {
@@ -153,15 +153,28 @@ button:hover {
   padding: 15px;
 }
 
+.ql-editor{
+
+}
+
 .versionDiv {
   width: 20vw;
-  padding: 10px;
-  background-color: #202020;
+  background-color: #181818;
   border-radius: 8px;
+  color: white;
+
+}
+
+.editorDiv{
+}
+
+a{
+  text-decoration: none;
+  color: white;
 }
 
 .versionHead {
-  height: 72px;
+  height: 50px;
   font-size: 18px;
   font-weight: bold;
   color: #ffffff;
@@ -169,7 +182,7 @@ button:hover {
 
 ul {
   max-width: fit-content;
-  margin: 0 auto;
+margin-left: 0;
 }
 
 li {
@@ -184,11 +197,14 @@ li:hover {
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .forms form {
     width: 90%;
   }
   .editorContainer {
-    display: block;
+    flex-direction: column-reverse;
+  }
+  .versionDiv{
+    width: 100%;
   }
 }
