@@ -14,11 +14,15 @@ export default function LogoutBtn() {
     await logout();
     nav("/");
   }
+  function handleInsp(){
+    
+  }
   return (
     <>
       <button className="dashboardBtn" onClick={handleDash}>
         Dashboard
       </button>
+      <button onClick={handleInsp}>Click here to get inspiration</button>
       <button className="logoutBtn" onClick={handleLogout}>
         Logout
       </button>
