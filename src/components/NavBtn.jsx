@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth/auth_context";
 import ImageModal from "./ImageModal";
 
-export default function LogoutBtn() {
+export default function NavBtn() {
   const nav = useNavigate();
   const { logout } = useAuth();
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleDash() {
     nav("/dashboard");
@@ -16,8 +16,8 @@ export default function LogoutBtn() {
     await logout();
     nav("/");
   }
-  function handleInsp(){
-setIsModalOpen(true);
+  function handleInsp() {
+    setIsModalOpen(true);
   }
   return (
     <>
@@ -25,7 +25,7 @@ setIsModalOpen(true);
         Dashboard
       </button>
       <button onClick={handleInsp}>Click here to get inspiration</button>
-      <ImageModal isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)} />
+      <ImageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <button className="logoutBtn" onClick={handleLogout}>
         Logout
       </button>

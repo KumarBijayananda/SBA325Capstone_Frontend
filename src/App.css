@@ -4,14 +4,14 @@
 
 /* This part changes the scrollbar handle */
 ::-webkit-scrollbar-thumb {
-  background: #353535; /* Medium grey color, this is the actual scrollbar */
+  background: #343A40; /* Medium grey color, this is the actual scrollbar */
   border-radius: 5px;
 }
 
 /* You can also change the scrollbar width and height */
 ::-webkit-scrollbar {
-  width: 8px; /* Width of the vertical scrollbar */
-  height: 12px; /* Height of the horizontal scrollbar */
+  width: 12px; /* Width of the vertical scrollbar */
+  height: 10px; /* Height of the horizontal scrollbar */
 }
 /* Above CSS from:https://community.retool.com/t/dark-theme-white-space-behind-scroll-bar/34453 */
 
@@ -52,7 +52,7 @@ nav {
 }
 
 .forms form {
-  background: #242424;
+  background: #212529;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
@@ -83,7 +83,7 @@ nav {
   border: 1px solid #444;
   border-radius: 5px;
   font-size: 16px;
-  background: #2b2b2c;
+  background: #32373b;
   color: #ffffff;
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
@@ -115,6 +115,17 @@ button:hover {
 button:disabled {
   background-color: #5b5c5c;
   cursor: not-allowed;
+}
+
+.profileBar{
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoutBtn{
+  position: absolute;
+  top: 8px;
+  right: 5vw;
 }
 
 /* Draft Cards */
@@ -151,7 +162,7 @@ button:disabled {
 .cardInfo {
   display: flex;
   justify-content: space-evenly;
-  padding: 10px;
+  padding: 15px;
 }
 
 /* Editor Section */
@@ -204,6 +215,54 @@ li {
 li:hover {
   color: #ffffff;
 }
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalBox {
+  background: #6C757D;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 1200px;
+  text-align: center;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.images{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.images img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 
 /* Responsive Design */
 @media (max-width: 800px) {

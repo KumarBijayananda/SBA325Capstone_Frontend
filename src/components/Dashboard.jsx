@@ -60,10 +60,13 @@ export default function DashboardComp() {
   function loaded() {
     return (
       <>
+      <div className="profileBar">
         <button className="createNew" onClick={handleNew}>
           Create New Draft
         </button>
         <h1>{user.name}</h1>
+        </div>
+        
         {/* <h1>{user.email}</h1> */}
         <div className="cardContainer">
           {user.drafts.length>0?(user.drafts.map((draft) => (

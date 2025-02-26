@@ -3,19 +3,18 @@ import axios from   "axios";
 
 export default function ImageModal({ isOpen, onClose }){
     const[photos, setPhotos]=useState([]);
-    const API_KEY="3NhsMzZjROb3VBdXXMjm5Vt9XDLMVmbDNQMZcPSAS2fAL6YW1quNdBwx";
 
     useEffect(()=>{
         if(isOpen){
-            getImages(randomPage, 6);
+            getImages(randomPage, 3);
         }
     },[isOpen])
 
-    async function getImages(page=1, perPage=6){
+    async function getImages(page=1, perPage=3){
         try {
             const res= await axios("https://api.pexels.com/v1/curated", {
         params: { page, per_page: perPage },
-        headers: { Authorization: API_KEY },
+        headers: { Authorization: import.meta.env.VITE_API_KEY},
       });
       setPhotos(res.data.photos);
         } catch (error) {
