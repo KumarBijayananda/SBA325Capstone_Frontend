@@ -1,8 +1,9 @@
-// /url
+//homepage for the website
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const nav = useNavigate(); //initialized useNavigate into variable
+
 
   return (
     <>
@@ -17,24 +18,24 @@ export default function Home() {
       </p>
       <div className="homepageImage">
         <img
-          src="../../src/assets/Screenshot 2025-02-26 225454.png"
+          src="/assets/Screenshot 2025-02-26 225454.png"
           alt="screenshot of pages for display"
           style={{ width: "600px", height: "400px", margin: "20px",borderRadius: "10px" }}
         />
 
         <img
-          src="../../src/assets/Screenshot 2025-02-26 225242.png"
+          src="/assets/Screenshot 2025-02-26 225242.png"
           alt="screenshot of pages for display"
           style={{ width: "600px", height: "400px", margin: "20px",borderRadius: "10px" }}
         />
 
         <img
-          src="../../src/assets/Screenshot 2025-02-26 225407.png"
+          src="/assets/Screenshot 2025-02-26 225407.png"
           alt="screenshot of pages for display"
           style={{ width: "600px", height: "400px", margin: "20px",borderRadius: "10px" }}
         />
         <img
-          src="../../src/assets/Screenshot 2025-02-26 225431.png"
+          src="/assets/Screenshot 2025-02-26 225431.png"
           alt="screenshot of pages for display"
           style={{ width: "600px", height: "400px", margin: "20px",borderRadius: "10px" }}
         />
