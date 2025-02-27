@@ -263,6 +263,13 @@ li:hover {
   cursor: pointer;
 }
 
+.homepageImage{
+  background-color: #444;
+  padding: 60px 20px;
+ margin: 40px;
+ border-radius: 10px;
+}
+
 
 /* Responsive Design */
 @media (max-width: 800px) {

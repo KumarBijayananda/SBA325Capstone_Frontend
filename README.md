@@ -1,10 +1,11 @@
 # Draftrove
 
 ### Draftrove: A platform to create, save, and manage drafts with version control.
-<img src="Frontend\src\assets\Screenshot 2025-02-26 225431.png" alt="Draftrove Screenshot"/> 
-<img src="Frontend\src\assets\Screenshot 2025-02-26 225242.png" alt="Draftrove Screenshot"/> 
-<img src="Frontend\src\assets\Screenshot 2025-02-26 225407.png" alt="Draftrove Screenshot"/> 
-<img src="Frontend\src\assets\Screenshot 2025-02-26 225454.png" alt="Draftrove Screenshot"/> 
+<img src="../Frontend/src/assets/Screenshot 2025-02-26 225242.png" alt="Draftrove Screenshot"/> 
+<img src="../Frontend/src/assets/Screenshot 2025-02-26 225407.png" alt="Draftrove Screenshot"/> 
+<img src="../Frontend/src/assets/Screenshot 2025-02-26 225454.png" alt="Draftrove Screenshot"/> 
+<img src="../Frontend/src/assets/Screenshot 2025-02-26 225431.png" alt="Draftrove Screenshot"/> 
+
 
 ## Description
 Draftrove is a platform where users can create, save, and manage drafts with version control. Users can easily revert to previous versions of their drafts and keep track of their changes over time. Users can also get images for inspiration if needed.
@@ -35,7 +36,7 @@ Draftrove is a platform where users can create, save, and manage drafts with ver
 * Users can create password protected accounts to store their trove of drafts.
 
 ## Wireframe Images
-<img src="Frontend\src\assets\Capstone_Wireframe.png" alt="Wireframing Screenshot"/>
+<img src="../Frontend/src/assets/Capstone_Wireframe.png" alt="Wireframing Screenshot"/>
 
 ## <a name="design"></a>Design
 Design elements implemented using HTML5 and CSS3. Inspired by modern, minimalist design principles.
