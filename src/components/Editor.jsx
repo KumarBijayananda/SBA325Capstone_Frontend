@@ -46,11 +46,14 @@ const Editor = ({ initialContent = "", id, cookies }) => {
   const getVersions = async () => {
     try {
       if (id) {
-        const res = await axios.get(`http://localhost:3000/archive/${id}`, {
-          headers: {
-            "x-auth-token": cookies.token,
-          },
-        });
+        const res = await axios.get(
+          `https://draftrove.onrender.com/archive/${id}`,
+          {
+            headers: {
+              "x-auth-token": cookies.token,
+            },
+          }
+        );
         setVersions(res.data);
       }
     } catch (error) {
@@ -70,13 +73,13 @@ const Editor = ({ initialContent = "", id, cookies }) => {
       try {
         if (id) {
           await axios.patch(
-            `http://localhost:3000/draft/${id}`,
+            `https://draftrove.onrender.com/draft/${id}`,
             { body: quillInstance.current.root.innerHTML },
             { headers: { "x-auth-token": cookies.token } }
           );
         } else {
           const res = await axios.post(
-            `http://localhost:3000/draft/`,
+            `https://draftrove.onrender.com/draft/`,
             { body: quillInstance.current.root.innerHTML },
             { headers: { "x-auth-token": cookies.token } }
           );
@@ -95,7 +98,7 @@ const Editor = ({ initialContent = "", id, cookies }) => {
     try {
       if (id) {
         await axios.post(
-          `http://localhost:3000/archive/${id}`,
+          `https://draftrove.onrender.com/archive/${id}`,
           { body: quillInstance.current.root.innerHTML },
           { headers: { "x-auth-token": cookies.token } }
         );
@@ -114,7 +117,9 @@ const Editor = ({ initialContent = "", id, cookies }) => {
       <div className="editorDiv">
         <div ref={editorRef} style={{ height: "60vh" }}></div>
         <button onClick={handleSave}>Save</button>
-        <button disabled={!id} onClick={handleArchive}>Archive</button>
+        <button disabled={!id} onClick={handleArchive}>
+          Archive
+        </button>
       </div>
     </div>
   );

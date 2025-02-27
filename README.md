@@ -12,7 +12,7 @@ Draftrove is a platform where users can create, save, and manage drafts with ver
 * [Features](#features)
 * [Design](#design)
 * [Project Next Steps](#nextsteps)
-* [Deployed App](#deployment)
+* [Deployed App and GitHub for Frontend and Backend](#deployment)
 * [About the Author](#author)
 
 

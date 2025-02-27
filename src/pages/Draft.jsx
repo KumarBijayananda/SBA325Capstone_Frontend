@@ -13,11 +13,14 @@ export default function Draft() {
   useEffect(() => {
     if (id) {
       async function getDraft(id) {
-        const res = await axios.get(`http://localhost:3000/draft/${id}`, {
-          headers: {
-            "x-auth-token": cookies.token,
-          },
-        });
+        const res = await axios.get(
+          `https://draftrove.onrender.com/draft/${id}`,
+          {
+            headers: {
+              "x-auth-token": cookies.token,
+            },
+          }
+        );
         const draft = await res.data;
         setDraft(draft);
       }

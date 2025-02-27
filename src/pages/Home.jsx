@@ -10,8 +10,8 @@ export default function Home(){
         <button onClick={()=>nav('/signup')}>Sign up</button>
         <h1>Welcome to Draftrove</h1>
         <h3>Login or Sign up if you don't already have an account.</h3>
-        <p>You can create documents for yours ideas and save it with version control where you can always
-            go back to your older version. Each save will remain until you delete it manually.
+        <p>You can create unlimited drafts for your ideas and archive any version for later as you work on your current version. Each 
+        archive and current version is saved as a seperate document.
         </p>
         </>
     )
