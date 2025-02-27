@@ -1,3 +1,7 @@
+//NavBtn component to hold nav buttons
+
+
+//Dependencies
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth/auth_context";
@@ -8,14 +12,17 @@ export default function NavBtn() {
   const { logout } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  //function to navigate to dashboard
   function handleDash() {
     nav("/dashboard");
   }
 
+  //function to handle logout
   async function handleLogout() {
     await logout();
     nav("/");
   }
+  //call the setter function to open the modal to display images
   function handleInsp() {
     setIsModalOpen(true);
   }

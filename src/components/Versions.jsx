@@ -1,3 +1,6 @@
+//Versions component to display all previous versions of the draft
+
+//Dependencies
 import { Link } from "react-router-dom";
 
 export default function Versions({ versions, quillInstance }) {
@@ -5,7 +8,7 @@ export default function Versions({ versions, quillInstance }) {
 
   function handleVersion(index, e) {
     e.preventDefault();
-
+//load the editor with previous version of the draft on click
     if (quillInstance.current) {
     quillInstance.current.root.innerHTML = versions[index].body;
   }

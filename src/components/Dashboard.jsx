@@ -1,3 +1,6 @@
+//Dashboard component to display various draft for the user
+
+//Dependencies
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,7 +9,6 @@ import DraftCard from "./DraftCard";
 
 export default function DashboardComp() {
   const { cookies } = useAuth();
-
   const nav = useNavigate();
   const [user, setUser] = useState({
     name: "",
@@ -14,7 +16,9 @@ export default function DashboardComp() {
     drafts: [],
   });
 
+
   useEffect(() => {
+    //gets all the drafts for the user and rerenders the page using setUser function
     async function getUserData() {
       try {
         const res = await axios.get(
@@ -35,10 +39,12 @@ export default function DashboardComp() {
     getUserData();
   }, [cookies.token]);
 
+  //navigate to the draft page with the editor when create new button is clicked
   async function handleNew() {
     nav("/draft");
   }
 
+  //deletes the draft and all the associated archives for it
   async function handleDelete(id) {
     try {
       await axios.delete(`https://draftrove.onrender.com/dashboard/${id}`, {
@@ -56,6 +62,8 @@ export default function DashboardComp() {
       console.error(error);
     }
   }
+
+
   function loading() {
     return <h3>Loading Data...</h3>;
   }
@@ -69,8 +77,7 @@ export default function DashboardComp() {
           </button>
           <h1>{user.name}</h1>
         </div>
-
-        {/* <h1>{user.email}</h1> */}
+        {/* maps through the drafts and passes the info to Draftcard component as props */}
         <div className="cardContainer">
           {user.drafts.length > 0 ? (
             user.drafts.map((draft) => (

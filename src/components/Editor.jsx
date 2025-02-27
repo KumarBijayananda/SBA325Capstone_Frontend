@@ -1,3 +1,6 @@
+//Editor component so user can create a draft and save it or archive it for later
+
+//Dependencies
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Quill from "quill";
@@ -14,6 +17,7 @@ const Editor = ({ initialContent = "", id, cookies }) => {
   // Initialize Quill editor
   useEffect(() => {
     if (!quillInstance.current && editorRef.current) {
+      //Instantializing quill editor
       const quill = new Quill(editorRef.current, {
         theme: "snow",
         modules: {
@@ -32,17 +36,18 @@ const Editor = ({ initialContent = "", id, cookies }) => {
         },
       });
 
-      quill.clipboard.dangerouslyPasteHTML(initialContent); // Set initial content
+      quill.clipboard.dangerouslyPasteHTML(initialContent); // setting initial content
 
+      //event listener for text change
       quill.on("text-change", () => {
         quillInstance.current = quill;
       });
 
-      quillInstance.current = quill; // Store reference to prevent reinitialization
+      quillInstance.current = quill; // storing reference to prevent reinitialization
     }
   }, []);
 
-  // Fetch draft versions when `id` changes
+  // fetching draft versions when `id` changes
   const getVersions = async () => {
     try {
       if (id) {
@@ -65,12 +70,13 @@ const Editor = ({ initialContent = "", id, cookies }) => {
     getVersions();
   }, [id]);
 
-  // Save draft
+  // saving draft
   async function handleSave() {
     if (quillInstance.current.root.textContent.trim() === "") {
       window.alert("There is nothing to save!!");
     } else {
       try {
+        //checking if id exists, if it does it is re-save if it doesn't it is a new save
         if (id) {
           await axios.patch(
             `https://draftrove.onrender.com/draft/${id}`,

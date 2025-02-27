@@ -1,3 +1,6 @@
+//Signup form component for user to signup up and create an account 
+
+//Dependencies
 import { useState } from 'react';
 import { useAuth } from '../context/auth/auth_context';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +14,7 @@ export default function SignupForm({ setNewUser }){
     password: '',
     password2: '',
   });
-
+  //function to handle onSubmit event listener
   async function handleSubmit(e) {
     e.preventDefault();
     if(formData.password!==formData.password2){
@@ -21,11 +24,12 @@ export default function SignupForm({ setNewUser }){
       nav('/dashboard')
     }
   }
-
+  //function to handle onChange event listener
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
+  //button to navigate to login page
   const handleClick = () => {
     nav('/login')
   };

@@ -1,3 +1,6 @@
+//Form component for user to login
+
+//Dependencies
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth/auth_context";
@@ -10,17 +13,19 @@ export default function LoginForm({ setNewUser }) {
     email:'',
     password:'',
   })
-
+//handle change for onChange event listener
 function handleChange(e){
   setFormData({...formData, [e.target.name]:e.target.value})
 }
 
+//handle submit for onSubmit event listener
 async function handleSubmit(e){
   e.preventDefault();
   await login(formData);
   nav('/dashboard')
 }
 
+//switch the page to signup page
   const handleClick = () => {
     nav('/signup')
   };
