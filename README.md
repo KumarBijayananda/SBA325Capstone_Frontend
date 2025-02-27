@@ -1,7 +1,7 @@
 # Draftrove
 
 ### Draftrove: A platform to create, save, and manage drafts with version control.
-<img src="../Frontend/src/assets/Screenshot 2025-02-26 225242.png" alt="Draftrove Screenshot"/> 
+![Draftrove Screenshot](src/assets/Screenshot%202025-02-26%20225431.png)
 <img src="../Frontend/src/assets/Screenshot 2025-02-26 225407.png" alt="Draftrove Screenshot"/> 
 <img src="../Frontend/src/assets/Screenshot 2025-02-26 225454.png" alt="Draftrove Screenshot"/> 
 <img src="../Frontend/src/assets/Screenshot 2025-02-26 225431.png" alt="Draftrove Screenshot"/> 
