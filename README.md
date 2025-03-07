@@ -4,7 +4,6 @@
 ![Draftrove Screenshot](src/assets/Screenshot%202025-02-26%20225407.png)
 ![Draftrove Screenshot](src/assets/Screenshot%202025-02-26%20225431.png)
 ![Draftrove Screenshot](src/assets/Screenshot%202025-02-26%20225454.png)
-![Draftrove Screenshot](src/assets/Screenshot%202025-02-26%20225431.png)
 
 
 ## Description
